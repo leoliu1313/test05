@@ -1,33 +1,41 @@
 <!DOCTYPE HTML>
-<html style="height: 100%;overflow:hidden">
+<html style="height: 100%; overflow: hidden;">
 
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <title>test</title>
 </head>
 
-<body style="height: 100%;overflow:hidden">
+<body style="height: 100%; overflow: hidden;">
 
-    <iframe name="iframe" id="iframe" src="http://www.lolstarz.com" width="100%" height="80%"></iframe>
-
-    <form id="form" action="http://www.lolstarz.com/summoner/game/timeline" method="post" target="iframe" style="margin: 10px auto 10px;text-align: center;">
-        <input type="text" name="id" value="1838547649" />
+    <form id="form" action="http://www.lolstarz.com/summoner/game/timeline" method="post" target="iframe" style="margin: 10px auto 10px; text-align: center;">
+        <input type="text" name="id" id="game-search" value="1838547649" />
         <input type="text" name="lo" value="na" style="display: none;" />
         <input type="text" name="type" value="summary" style="display: none;" />
         <input type="text" name="filter" value="timeline" style="display: none;" />
-        <input type="submit" value="submit" />
+        <input type="submit" value="submit" onclick="summonerGameSearchStart();"  />
     </form>
 	
-    <form id="form2" action="http://www.lolstarz.com/summoner/team/search" method="post" target="iframe" style="margin: 10px auto 10px;text-align: center;">
-        <input type="text" name="names" value="twmiaoli, asthmama" />
+    <form id="form2" action="http://www.lolstarz.com/summoner/team/search" method="post" target="iframe" style="margin: 10px auto 10px; text-align: center;">
+		<textarea name="names" rows="4" cols="50" id="team-search-names" >twmiaoli, asthmama</textarea>
+		<br>
         <input type="text" name="lo" value="na" style="display: none;" />
-        <input type="submit" value="submit" />
+        <input type="submit" value="submit" onclick="summonerTeamSearchStart();" />
     </form>
 	
-	<div style="margin: 10px auto 10px;text-align: center;">
-	    <a href="http://na.op.gg/multi/">http://na.op.gg/multi/</a>
+	<div style="margin: 10px auto 10px; text-align: center;">
+	    <a href="http://www.lolking.net/charts?region=all&type=champion-winrate&range=weekly&map=sr&queue=1x1&league=gold">http://www.lolking.net/charts?region=all&type=champion-winrate&range=weekly&map=sr&queue=1x1&league=gold</a>
+		<br>
+	    <a href="http://www.lolstarz.com">http://www.lolstarz.com</a>
+		<br>
+	    <a href="http://na.op.gg/multi/">http://na.op.gg/multi</a>
 	</div>
 
+    <iframe name="iframe" id="iframe" src="" width="100%" height="70%" style="border: 0;"></iframe>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="control.js"></script>
+	
 </body>
 
 </html>
