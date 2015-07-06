@@ -51,54 +51,37 @@ function summonerTeamSearchStart() {
 		for (var i=0; i<splitnames.length; i++) {
 			splitname = splitnames[i].split(":");
 			if (splitname[0].length > 0 && splitname.length > 1) {
-				var duplicate = names.split(",");
-				var isdupl = false;
-				for (var j = 0; j < duplicate.length; j++) {
-					if (duplicate[j] == splitname[0]) {
-						isdupl = true;
-						break;
-					}
-				}
-				if (!isdupl) {
-					names = names + splitname[0] + ",";
-				}
+				names = names + splitname[0] + ",";
 			}
 		}
 		for (var i=0; i<splitnames.length; i++) {
-			splitname = splitnames[i].split("joined the room.");
+			splitname = splitnames[i].split(" joined the room.");
 			if (splitname[0].length > 0 && splitname.length == 2) {
-				var duplicate = names.split(",");
-				var isdupl = false;
-				for (var j = 0; j < duplicate.length; j++) {
-					if (duplicate[j] == splitname[0]) {
-						isdupl = true;
-						break;
-					}
-				}
-				if (!isdupl) {
-					names = names + splitname[0] + ",";
-				}
+				names = names + splitname[0] + ",";
 			}
 		}
 		for (var i=0; i<splitnames.length; i++) {
-			splitname = splitnames[i].split("joined the group.");
+			splitname = splitnames[i].split(" joined the group.");
 			if (splitname[0].length > 0 && splitname.length == 2) {
-				var duplicate = names.split(",");
-				var isdupl = false;
-				for (var j = 0; j < duplicate.length; j++) {
-					if (duplicate[j] == splitname[0]) {
-						isdupl = true;
-						break;
-					}
-				}
-				if (!isdupl) {
-					names = names + splitname[0] + ",";
-				}
+				names = names + splitname[0] + ",";
 			}
 		}
-		$("#team-search-names").val(names);
 	}
 
+	var duplicate = names.split(",");
+    var seen = {};
+    var out = "";
+    var len = duplicate.length;
+    for(var i = 0; i < len; i++) {
+         var item = duplicate[i];
+		 item = item.replace(/\s+/g, '');
+         if(item != "" && seen[item] !== 1) {
+				seen[item] = 1;
+				out = out + item + ",";
+         }
+    }
+	$("#team-search-names").val(out);
+	
 	// update
 	$( "#form2" ).submit();
 }
